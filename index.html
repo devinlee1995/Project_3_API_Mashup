@@ -27,9 +27,12 @@
 			     	type: "GET",
 			      	url: 'https://pokeapi.co/api/v2/pokemon/'+ name,
 			     	success: function (response) {
+			     		$(".modal-wrapper").show(); //show our modal
+    					//add the .modal-on class to <body>
+    					$("body").addClass("modal-on"); 
 			     		console.log(response);
 
-			          	document.getElementById('Pokemon').innerHTML = name;
+			          	document.getElementById('name').innerHTML = name;
 
 			          	var pokemon = new Pokemon();
 
@@ -62,14 +65,22 @@
 			          	pokemon.image = response.sprites.front_default;
 			          	var img = new Image();
 			          	img.src = pokemon.image;
-			          	$("#div1").html("");
+			          	$("#sideimage").html("");
 
-			          	div1.appendChild(img);
+			          	sideimage.appendChild(img);
+
+			          	$(".exit").click(function(e){
+							e.preventDefault();
+							//basically the opposite of activate
+								$(".modal-wrapper").hide();
+							$("body").removeClass("modal-on");
+						});
 			      	}
 				});
 
 			});
 		}
+
 	</script>
 	
 	<link href= "CSS/style.css" type= "text/css" 
@@ -95,11 +106,18 @@
 			<h2 id="Pokemon">Enter a Pokemon!</h2> 
 			<form id = "search">
 				<input type ="text" name = "name" placeholder = "Pokemon Name">
-					<input type = "submit">
+				<input type = "submit" class = "activate-modal"></a>
+					<div class="modal-wrapper">
+	  					<div class="modal">
+	  						<div id = "sideimage"> </div>
+		    				<a href="#" class="exit">X</a>
+		    				<h3 id = "name"></h3>
+		    				<a href="#" class="yes">Yes</a>
+		    				<a href="#" class="no">No</a>
+	  					</div>
+					</div>
 			</form>
 		</div>
-
-		<div id = "div1"> </div>
 	</div>
 
 
