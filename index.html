@@ -2,10 +2,10 @@
 <html lang = "en">
 <head>
 	<meta charset = "UTF-8">
-	<title> Pokemon</title>
+	<title> PokeDex</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script src="script.js"></script>
-
+	
 	<script type="text/javascript">
 
 		function Pokemon() {
@@ -72,14 +72,36 @@
 		}
 	</script>
 	
-</head>
-<body>
-	<h2 id="Pokemon">Pokemon</h2> 
-	<form id = "search">
-		<input type ="text" name = "name" placeholder = "Pokemon Name">
-			<input type = "submit">
-	</form>
+	<link href= "CSS/style.css" type= "text/css" 
+		rel= "stylesheet">
 
-	<div id = "div1"> </div>
+</head>
+
+<body>
+
+	<nav>
+		<div id= "logo">
+			<img src= "images/Pokemon_API.png" width= "150" height= "150">
+		</div>
+		<div id= "navigation">
+			<li> <a class= "links" href="index.html">HOME</a></li>
+
+			<li> <a class= "links" href="aboutUs.html">ABOUT US</a> </li>	
+		</div> 
+	</nav>
+
+	<div id = "main_body"> 
+		<div id = "search_box">
+			<h2 id="Pokemon">Enter a Pokemon!</h2> 
+			<form id = "search">
+				<input type ="text" name = "name" placeholder = "Pokemon Name">
+					<input type = "submit">
+			</form>
+		</div>
+
+		<div id = "div1"> </div>
+	</div>
+
+
 </body>
 </html>

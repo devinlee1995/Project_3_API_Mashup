@@ -7,9 +7,10 @@ $(document).ready(function(){
       type: "GET",
       url: 'https://pokeapi.co/api/v2/pokemon/'+ formData,
       success: function (response) {
-          document.getElementById('Pokemon').innerHTML = formData;
+          document.getElementById('Pokemon').innerHTML = "The Pokemon is: " + formData;
           console.log(response.name);
           console.log(response.types[0]);
+
           var list_sprites= response.sprites;
           var img = new Image();
           img.src = list_sprites.front_default;
