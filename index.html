@@ -41,6 +41,8 @@
 		window.onload = function() {
 			var search = document.getElementById("search");
 			search.addEventListener("submit", function(e) {
+				$(".modal-wrapper1").show();
+				$(".loader").show();
 				e.preventDefault();
 				var name = search.getElementsByTagName("input")[0].value;
 				console.log(name);
@@ -49,8 +51,8 @@
 			     	type: "GET",
 			      	url: 'https://pokeapi.co/api/v2/pokemon/'+ name,
 			     	success: function (response) {
-
-			     		$(".modal-wrapper").show(); //show our modal
+			     		$(".loader").hide(); //show our modal
+			     		$(".modal-wrapper2").show();
     					//add the .modal-on class to <body>
     					$("body").addClass("modal-on"); 
 			     		console.log(response);
@@ -95,13 +97,16 @@
 			          	img.src = pokemon.image;
 			          	$("#sideimage").html("");
 
+
 			          	sideimage.appendChild(img);
 
 			          	$(".exit").click(function(e){
 							e.preventDefault();
 							//basically the opposite of activate
-								$(".modal-wrapper").hide();
+							$(".modal-wrapper1").hide();
+							$(".modal-wrapper2").hide();
 							$("body").removeClass("modal-on");
+							 document.getElementById('Pokemon').innerHTML = "Enter a Pokemon!";
 						});
 
 
@@ -141,7 +146,9 @@
 			<form id = "search">
 				<input type ="text" name = "name" placeholder = "Pokemon Name">
 				<input type = "submit" class = "activate-modal"></a>
-					<div class="modal-wrapper">
+					<div class="loader"></div>
+					<div class="modal-wrapper1"> </div>
+					<div class="modal-wrapper2">
 	  					<div class="modal">
 	  						<a href="#" class="exit">X</a>
 	  						<h1 id="pokedex"></h1>
