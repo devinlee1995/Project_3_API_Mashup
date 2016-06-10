@@ -5,6 +5,72 @@
 	<title> Pokemon</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script src="script.js"></script>
+
+	<script type="text/javascript">
+
+		function Pokemon() {
+			this.name;
+			this.types;
+			this.image;
+			this.id;
+			this.versions;
+			this.height;
+			this.weight;
+		}
+		window.onload = function() {
+			var search = document.getElementById("search");
+			search.addEventListener("submit", function(e) {
+				e.preventDefault();
+				var name = search.getElementsByTagName("input")[0].value;
+				console.log(name);
+				$.ajax({
+			     	type: "GET",
+			      	url: 'https://pokeapi.co/api/v2/pokemon/'+ name,
+			     	success: function (response) {
+			     		console.log(response);
+
+			          	document.getElementById('Pokemon').innerHTML = name;
+
+			          	var pokemon = new Pokemon();
+
+			          	pokemon.id=response.id;
+			          	console.log("Pokedex Id: " + pokemon.id);
+
+			          	pokemon.name = response.name;
+			          	console.log("Name: " + pokemon.name);
+
+			          	pokemon.height = response.height;
+			          	console.log("Height: " + pokemon.height);
+
+			          	pokemon.weight = response.weight;
+			          	console.log("Weight: " + pokemon.weight);
+			          	
+						var types =  [];
+						for(index in response.types) {
+							types.push(response.types[index].type.name);
+						}	
+						pokemon.types = types;
+						console.log("types: " + types);
+
+						var versions = [];
+						for(index in response.game_indices) {
+							versions.push(response.game_indices[index].version.name);
+						}
+						pokemon.versions = versions;
+						console.log("Versions in: " + pokemon.versions);
+
+			          	pokemon.image = response.sprites.front_default;
+			          	var img = new Image();
+			          	img.src = pokemon.image;
+			          	$("#div1").html("");
+
+			          	div1.appendChild(img);
+			      	}
+				});
+
+			});
+		}
+	</script>
 	
 </head>
 <body>
