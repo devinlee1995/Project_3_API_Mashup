@@ -8,6 +8,27 @@
 	
 	<script type="text/javascript">
 
+		// var types_color = {
+		// 	"Normal"
+		// 	"Fire"
+		// 	"Fighting"	
+		// 	"Water"
+		// 	"Flying"	
+		// 	"Grass"
+		// 	"Poison"	
+		// 	"Electric"
+		// 	"Ground"	
+		// 	"Psychic" 
+		// 	"Rock"	
+		// 	"Ice"
+		// 	"Bug"	
+		// 	"Dragon"
+		// 	"Ghost"	
+		// 	"Dark"
+		// 	"Steel"	
+		// 	"Fairy"
+		// };
+
 		function Pokemon() {
 			this.name;
 			this.types;
@@ -23,29 +44,35 @@
 				e.preventDefault();
 				var name = search.getElementsByTagName("input")[0].value;
 				console.log(name);
+
 				$.ajax({
 			     	type: "GET",
 			      	url: 'https://pokeapi.co/api/v2/pokemon/'+ name,
 			     	success: function (response) {
+
 			     		$(".modal-wrapper").show(); //show our modal
     					//add the .modal-on class to <body>
     					$("body").addClass("modal-on"); 
 			     		console.log(response);
 
-			          	document.getElementById('name').innerHTML = name;
+			          	// document.getElementById('name').innerHTML = name;
 
 			          	var pokemon = new Pokemon();
 
 			          	pokemon.id=response.id;
+			          	document.getElementById("pokedex").innerHTML = "#" + pokemon.id;
 			          	console.log("Pokedex Id: " + pokemon.id);
 
 			          	pokemon.name = response.name;
+			          	document.getElementById("name").innerHTML = "Name: " + pokemon.name;
 			          	console.log("Name: " + pokemon.name);
 
 			          	pokemon.height = response.height;
+			          	document.getElementById("height").innerHTML = "Height: " + pokemon.height;
 			          	console.log("Height: " + pokemon.height);
 
 			          	pokemon.weight = response.weight;
+			          	document.getElementById("weight").innerHTML = "Width: " + pokemon.weight;
 			          	console.log("Weight: " + pokemon.weight);
 			          	
 						var types =  [];
@@ -53,6 +80,7 @@
 							types.push(response.types[index].type.name);
 						}	
 						pokemon.types = types;
+						document.getElementById("types").innerHTML = "Types: " + pokemon.types;
 						console.log("types: " + types);
 
 						var versions = [];
@@ -75,6 +103,8 @@
 								$(".modal-wrapper").hide();
 							$("body").removeClass("modal-on");
 						});
+
+
 			      	}
 				});
 
@@ -113,16 +143,25 @@
 				<input type = "submit" class = "activate-modal"></a>
 					<div class="modal-wrapper">
 	  					<div class="modal">
-	  						<div id = "sideimage"> </div>
-		    				<a href="#" class="exit">X</a>
-		    				<h3 id = "name"></h3>
-		    				<a href="#" class="yes">Yes</a>
-		    				<a href="#" class="no">No</a>
+	  						<a href="#" class="exit">X</a>
+	  						<h1 id="pokedex"></h1>
+	  						<div id="modal-content">
+		  						<div id="sideimage">
+		  							
+		  						</div>
+		  						<div id="modal-info">
+		  							<div id="name">Name: </div>
+		  							<div id="weight">Weight: </div>
+		  							<div id="height">Height: </div>
+		  							<div id="types">Type: </div>
+		  						</div>
+	  						</div>
 	  					</div>
 					</div>
 			</form>
 		</div>
 	</div>
+
 
 
 </body>

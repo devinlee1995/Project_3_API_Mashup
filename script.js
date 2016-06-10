@@ -7,6 +7,7 @@ $(document).ready(function(){
       type: "GET",
       url: 'https://pokeapi.co/api/v2/pokemon/'+ formData,
       success: function (response) {
+        
           document.getElementById('Pokemon').innerHTML = "The Pokemon is: " + formData;
           console.log(response.name);
           console.log(response.types[0]);
@@ -15,7 +16,7 @@ $(document).ready(function(){
           var img = new Image();
           img.src = list_sprites.front_default;
           $("#div1").html("");
-          div1.appendChild(img);
+          // div1.appendChild(img);
       }
     });
   });
