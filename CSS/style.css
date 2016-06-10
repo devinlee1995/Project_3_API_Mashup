@@ -24,7 +24,7 @@ nav {
 }
 a.links {
 	font-size: 30px;
-	margin-
+	font-family: Verdana;
 	color: black;
 	text-decoration: none;
 }
@@ -90,9 +90,41 @@ input[type=submit]:focus {
 	outline: none; 
 }
 
-/*Modal CSS code*/
+/*Loader*/
+.loader {
+	margin: 10px auto 10px auto;
+    background-image:url("../images/Pokeball_Loader.png");
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    display: none;
+}
 
-.modal-wrapper{
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/*Modal CSS code*/
+.modal-wrapper1{
+  position: fixed;
+  top:0;
+  left:0;
+
+  background-color: rgba(155,155,155,0.6);
+
+  width:100%;
+  height:100%;
+  padding: 0;
+  margin: 0;
+
+  display: none;
+}
+
+.modal-wrapper2{
   position: fixed;
   top:0;
   left:0;
@@ -109,7 +141,7 @@ input[type=submit]:focus {
 
 .modal{
   position: relative;
-  top: 50%;
+  top: 30%;
   width: 500px;
 
   padding: 30px;
