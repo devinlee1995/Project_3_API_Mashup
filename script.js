@@ -8,12 +8,14 @@ $(document).ready(function(){
       url: 'https://pokeapi.co/api/v2/pokemon/'+ formData,
       success: function (response) {
           document.getElementById('Pokemon').innerHTML = "The Pokemon is: " + formData;
-          var list_sprites= response.sprites;
-             var img = new Image();
-             img.src = list_sprites.front_default;
-            $("#div1").html("");
-            div1.appendChild(img);
+          console.log(response.name);
+          console.log(response.types[0]);
 
+          var list_sprites= response.sprites;
+          var img = new Image();
+          img.src = list_sprites.front_default;
+          $("#div1").html("");
+          div1.appendChild(img);
       }
     });
   });

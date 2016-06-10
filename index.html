@@ -5,8 +5,87 @@
 	<title> PokeDex</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script src="script.js"></script>
+	
+	<script type="text/javascript">
+
+		function Pokemon() {
+			this.name;
+			this.types;
+			this.image;
+			this.id;
+			this.versions;
+			this.height;
+			this.weight;
+		}
+		window.onload = function() {
+			var search = document.getElementById("search");
+			search.addEventListener("submit", function(e) {
+				e.preventDefault();
+				var name = search.getElementsByTagName("input")[0].value;
+				console.log(name);
+				$.ajax({
+			     	type: "GET",
+			      	url: 'https://pokeapi.co/api/v2/pokemon/'+ name,
+			     	success: function (response) {
+			     		$(".modal-wrapper").show(); //show our modal
+    					//add the .modal-on class to <body>
+    					$("body").addClass("modal-on"); 
+			     		console.log(response);
+
+			          	document.getElementById('name').innerHTML = name;
+
+			          	var pokemon = new Pokemon();
+
+			          	pokemon.id=response.id;
+			          	console.log("Pokedex Id: " + pokemon.id);
+
+			          	pokemon.name = response.name;
+			          	console.log("Name: " + pokemon.name);
+
+			          	pokemon.height = response.height;
+			          	console.log("Height: " + pokemon.height);
+
+			          	pokemon.weight = response.weight;
+			          	console.log("Weight: " + pokemon.weight);
+			          	
+						var types =  [];
+						for(index in response.types) {
+							types.push(response.types[index].type.name);
+						}	
+						pokemon.types = types;
+						console.log("types: " + types);
+
+						var versions = [];
+						for(index in response.game_indices) {
+							versions.push(response.game_indices[index].version.name);
+						}
+						pokemon.versions = versions;
+						console.log("Versions in: " + pokemon.versions);
+
+			          	pokemon.image = response.sprites.front_default;
+			          	var img = new Image();
+			          	img.src = pokemon.image;
+			          	$("#sideimage").html("");
+
+			          	sideimage.appendChild(img);
+
+			          	$(".exit").click(function(e){
+							e.preventDefault();
+							//basically the opposite of activate
+								$(".modal-wrapper").hide();
+							$("body").removeClass("modal-on");
+						});
+			      	}
+				});
+
+			});
+		}
+
+	</script>
+	
 	<link href= "CSS/style.css" type= "text/css" 
 		rel= "stylesheet">
+
 </head>
 
 <body>
@@ -27,11 +106,18 @@
 			<h2 id="Pokemon">Enter a Pokemon!</h2> 
 			<form id = "search">
 				<input type ="text" name = "name" placeholder = "Pokemon Name">
-					<input type = "submit">
+				<input type = "submit" class = "activate-modal"></a>
+					<div class="modal-wrapper">
+	  					<div class="modal">
+	  						<div id = "sideimage"> </div>
+		    				<a href="#" class="exit">X</a>
+		    				<h3 id = "name"></h3>
+		    				<a href="#" class="yes">Yes</a>
+		    				<a href="#" class="no">No</a>
+	  					</div>
+					</div>
 			</form>
 		</div>
-
-		<div id = "div1"> </div>
 	</div>
 
 
