@@ -1,9 +1,9 @@
 body {
 
 }
-
-
-
+nav {
+	position: relative;
+}
 #logo {
 	margin: 10px auto 10px auto;
 	width: 150px;
@@ -13,9 +13,25 @@ body {
 
 #navigation {
 	width: 100%;
-	margin: 0px auto 0px auto;
-	padding-bottom: 20px;
+	position: absolute;
+	top:50%;
+	transform: translate(0, -50%);
 	text-align: center;
+}
+#navigation > div {
+	width: 50%;
+	float: left;
+}
+a.links {
+	font-size: 30px;
+	margin-
+	color: black;
+	text-decoration: none;
+}
+
+a.links:hover {
+	text-decoration: underline;
+	color: #FF533F;
 }
 
 #main_body {
@@ -38,24 +54,7 @@ body {
 	text-align: center;
 }
 
-li {
-	display: inline; 
-	font-family: Verdana; 
-	list-style: none;
-	font-style: none;
-}
 
-a.links {
-	font-size: 30px;
-	margin: 200px;
-	color: black;
-	text-decoration: none;
-}
-
-a.links:hover {
-	text-decoration: underline;
-	color: #FF533F;
-}
 
 h2 {
 	color: white;
