@@ -8,6 +8,27 @@
 	
 	<script type="text/javascript">
 
+		// var types_color = {
+		// 	"Normal"
+		// 	"Fire"
+		// 	"Fighting"	
+		// 	"Water"
+		// 	"Flying"	
+		// 	"Grass"
+		// 	"Poison"	
+		// 	"Electric"
+		// 	"Ground"	
+		// 	"Psychic" 
+		// 	"Rock"	
+		// 	"Ice"
+		// 	"Bug"	
+		// 	"Dragon"
+		// 	"Ghost"	
+		// 	"Dark"
+		// 	"Steel"	
+		// 	"Fairy"
+		// };
+
 		function Pokemon() {
 			this.name;
 			this.types;
@@ -20,32 +41,40 @@
 		window.onload = function() {
 			var search = document.getElementById("search");
 			search.addEventListener("submit", function(e) {
+				$(".modal-wrapper1").show();
+				$(".loader").show();
 				e.preventDefault();
 				var name = search.getElementsByTagName("input")[0].value;
 				console.log(name);
+
 				$.ajax({
 			     	type: "GET",
 			      	url: 'https://pokeapi.co/api/v2/pokemon/'+ name,
 			     	success: function (response) {
-			     		$(".modal-wrapper").show(); //show our modal
+			     		$(".loader").hide(); //show our modal
+			     		$(".modal-wrapper2").show();
     					//add the .modal-on class to <body>
     					$("body").addClass("modal-on"); 
 			     		console.log(response);
 
-			          	document.getElementById('name').innerHTML = name;
+			          	// document.getElementById('name').innerHTML = name;
 
 			          	var pokemon = new Pokemon();
 
 			          	pokemon.id=response.id;
+			          	document.getElementById("pokedex").innerHTML = "#" + pokemon.id;
 			          	console.log("Pokedex Id: " + pokemon.id);
 
 			          	pokemon.name = response.name;
+			          	document.getElementById("name").innerHTML = "Name: " + pokemon.name;
 			          	console.log("Name: " + pokemon.name);
 
 			          	pokemon.height = response.height;
+			          	document.getElementById("height").innerHTML = "Height: " + pokemon.height;
 			          	console.log("Height: " + pokemon.height);
 
 			          	pokemon.weight = response.weight;
+			          	document.getElementById("weight").innerHTML = "Width: " + pokemon.weight;
 			          	console.log("Weight: " + pokemon.weight);
 			          	
 						var types =  [];
@@ -53,6 +82,7 @@
 							types.push(response.types[index].type.name);
 						}	
 						pokemon.types = types;
+						document.getElementById("types").innerHTML = "Types: " + pokemon.types;
 						console.log("types: " + types);
 
 						var versions = [];
@@ -67,14 +97,19 @@
 			          	img.src = pokemon.image;
 			          	$("#sideimage").html("");
 
+
 			          	sideimage.appendChild(img);
 
 			          	$(".exit").click(function(e){
 							e.preventDefault();
 							//basically the opposite of activate
-								$(".modal-wrapper").hide();
+							$(".modal-wrapper1").hide();
+							$(".modal-wrapper2").hide();
 							$("body").removeClass("modal-on");
+							 document.getElementById('Pokemon').innerHTML = "Enter a Pokemon!";
 						});
+
+
 			      	}
 				});
 
@@ -95,9 +130,13 @@
 			<img src= "images/Pokemon_API.png" width= "150" height= "150">
 		</div>
 		<div id= "navigation">
-			<li> <a class= "links" href="index.html">HOME</a></li>
+			<div>
+				<a class= "links" href="index.html">HOME</a>
+			</div>
 
-			<li> <a class= "links" href="aboutUs.html">ABOUT US</a> </li>	
+			<div>
+				<a class= "links" href="aboutUs.html">ABOUT US</a>
+			</div>
 		</div> 
 	</nav>
 
@@ -107,18 +146,29 @@
 			<form id = "search">
 				<input type ="text" name = "name" placeholder = "Pokemon Name">
 				<input type = "submit" class = "activate-modal"></a>
-					<div class="modal-wrapper">
+					<div class="loader"></div>
+					<div class="modal-wrapper1"> </div>
+					<div class="modal-wrapper2">
 	  					<div class="modal">
-	  						<div id = "sideimage"> </div>
-		    				<a href="#" class="exit">X</a>
-		    				<h3 id = "name"></h3>
-		    				<a href="#" class="yes">Yes</a>
-		    				<a href="#" class="no">No</a>
+	  						<a href="#" class="exit">X</a>
+	  						<h1 id="pokedex"></h1>
+	  						<div id="modal-content">
+		  						<div id="sideimage">
+		  							
+		  						</div>
+		  						<div id="modal-info">
+		  							<div id="name">Name: </div>
+		  							<div id="weight">Weight: </div>
+		  							<div id="height">Height: </div>
+		  							<div id="types">Type: </div>
+		  						</div>
+	  						</div>
 	  					</div>
 					</div>
 			</form>
 		</div>
 	</div>
+
 
 
 </body>
