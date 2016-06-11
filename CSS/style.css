@@ -40,8 +40,8 @@ a.links:hover {
 	width: 90%;
 	height: 300px;
 	margin: 0px auto 0px auto;
+	position: relative;
 }
-
 #search_box{
 	margin: 0px auto 0px auto;
 	width: 100%;
@@ -172,4 +172,9 @@ input[type=submit]:focus {
 #modal-info {
 	text-align: left;
 
+}
+#types > span {
+	padding: 2px;
+	border-radius: 5px;
+	margin-left: 5px;
 }
