@@ -210,6 +210,13 @@ input[type=submit]:focus {
 	padding-right: 90px;
 	padding-left: 90px;
 }
+#gif {
+	text-align: left;
+	background-color: orange;
+	padding: 2px;
+	border-radius: 5px;
+	display: none;
+}
 #modal-info {
 	text-align: left;
 
