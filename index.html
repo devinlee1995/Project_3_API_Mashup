@@ -71,7 +71,7 @@
 				          	console.log("Pokedex Id: " + pokemon.id);
 
 				          	//store pokemon name
-				          	pokemon.name = response.name;
+				          	pokemon.name = response.name[0].toUpperCase() + (response.name).slice(1);
 				          	document.getElementById("name").innerHTML = "Name: " + pokemon.name;
 				          	console.log("Name: " + pokemon.name);
 
