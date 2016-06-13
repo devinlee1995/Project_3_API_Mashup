@@ -2,7 +2,7 @@ $(document).ready(function(){
   $("#search").on("submit",function(e){
     e.preventDefault();
     var formData = 
-      $('input[name=name]').val();
+    $('input[name=name]').val();
     $.ajax({
       type: "GET",
       url: 'https://pokeapi.co/api/v2/pokemon/'+ formData,
@@ -12,6 +12,8 @@ $(document).ready(function(){
       }
     });
   });
+
+
 });
 
 //$.each(item, function(key,value){
