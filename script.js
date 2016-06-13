@@ -32,6 +32,13 @@ function Pokemon() {
 
 $(document).ready(function(){
 
+  var title = document.URL.split('/').join(' ').trim().split(" ");
+  title = title[title.length-1];
+  var currentDir = document.querySelectorAll("[href='" + title + "']")[0];
+  currentDir.style.textDecoration = "underline";
+  currentDir.style.color = "#FF533F";
+
+  console.log(currentDir);
   $("#search").on("submit",function(e){
     $(".modal-wrapper1").show();
     $(".loader").show();
