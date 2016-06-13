@@ -1,6 +1,4 @@
-body {
 
-}
 nav {
 	position: relative;
 }
@@ -182,40 +180,75 @@ input[type=submit]:focus {
 
   display: none;
 }
-
-.modal{
-  position: relative;
-  top: 30%;
-  width: 500px;
-
-  padding: 30px;
-  margin: 0 auto;
-
-  background-color: white;
-
-  border-radius: 10px;
+.modal {
+	border: 5px solid white;
+	border-radius: 5px;
+	background-color: white;
+	width: 500px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
-
-.modal-on{
-  /*overflow: hidden;*/
+.exit {
+	position: absolute;
+	top: 0%;
+	right: 0%;
 }
-
-.exit{
-  position: absolute;
-  top: 2%;
-  right: 2%;
+#modal-header {
+	margin-top: 10px;
+	text-align: center;
+	position: relative;
+	height: 34px;
 }
-
-#sideimage {
+#pokedex {
+	position: relative;
+	bottom: 25%;
+}
+.modal-content {
+	clear: left;
+	height: 200px;
+}
+.modal-content > * {
 	float: left;
-	width: 20%;
-	right: 20%;
-	padding-right: 90px;
-	padding-left: 90px;
+	width: 50%;
+	height: 180px;
+}
+#sideimage {
+	position: relative;
+}
+#sideimage > img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 5px solid #DB0101;
+	padding:20px 10px 20px 10px;
 }
 #modal-info {
+	width: 50%;
+	position: relative;
+}
+#modal-info > div {
+	/*border-bottom: 2px solid black;*/
+	margin-top: 20px;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
 	text-align: left;
-
+}
+#name {
+		animation: type1 4s steps(60, end);
+}
+@keyframes type1{ 
+		from { width: 45px; } 
+}
+#weight, #height, #types, #sideimage > img{
+	opacity: 1;
+	animation: show 4s ease-in-out;
+} 
+@keyframes show {
+	from { opacity: 0 }
 }
 #types > span {
 	padding: 2px;
