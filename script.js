@@ -42,6 +42,7 @@ $(document).ready(function(){
     $(".modal-wrapper1").show();
     $(".loader").show();
     e.preventDefault();
+
     var name = $('input[name=name]').val();
 
     $.ajax({
@@ -126,6 +127,8 @@ $(document).ready(function(){
         }
       });
   });
+
+
 });
 
 //$.each(item, function(key,value){
