@@ -41,12 +41,6 @@
 		}
 		window.onload = function() {
 
-			var gif = document.getElementById("gif");
-
-			gif.addEventListener("click", function() {
-
-			})
-
 			var search = document.getElementById("search");
 
 			search.addEventListener("submit", function(e) {
@@ -59,7 +53,6 @@
 					$.ajax({
 				     	type: "POST",
 				      	url: 'https://pokeapi.co/api/v2/pokemon/'+ name,
-				      	dataType: 'jsonp',
 				     	success: function (response) {
 				     	// 	$(".loader").hide(); //show our modal
 				     	// 	$(".modal-wrapper2").show();
@@ -69,15 +62,12 @@
 
 				          	// document.getElementById('name').innerHTML = name;
 
+				          	console.log(response);
 				          	var pokemon = new Pokemon();
 
 				          	//store pokemone id
 				          	pokemon.id=response.id;
-				          	document.getElementById("pokedex").innerHTML = "#" + pokemon.id;
-				          	if(pokemon.id <= 151) {
-				          		//show gif tag if pokemon id is less than 151
-				          		gif.style.display = "block";
-				          	}
+				          	document.getElementById("pokedex").innerHTML =  "#" + pokemon.id;
 				          	console.log("Pokedex Id: " + pokemon.id);
 
 				          	//store pokemon name
@@ -187,20 +177,25 @@
 					<div class="loader"></div>
 					<div class="modal-wrapper1"> </div>
 					<div class="modal-wrapper2">
-	  					<div class="modal">
-	  						<a href="#" class="exit">X</a>
-	  						<h1 id="pokedex"></h1>
-	  						<div id="gif">Gif</div>
-	  						<div id="modal-content">
-		  						<div id="sideimage"></div>
-		  						<div id="modal-info">
-		  							<div id="name">Name: </div>
-		  							<div id="weight">Weight: </div>
-		  							<div id="height">Height: </div>
-		  							<div id="types">Type: </div>
-		  						</div>
-	  						</div>
-	  					</div>
+						<div class="modal">
+							<a href="#" class="exit">X</a>
+							<div id="modal-header">
+								<img src="http://img03.deviantart.net/49cf/i/2011/068/a/c/pokeball_desktop_icon_by_beccerberry-d3b98cf.png" width="34px" height="34px">
+								<span id="pokedex"></span>
+							</div>
+							<hr>
+							<div class="modal-content">
+								<div id="sideimage">
+								
+								</div>
+								<div id="modal-info">
+									<div id="name">Name: </div>
+									<div id="weight">Weight: </div>
+									<div id="height">Height: </div>
+									<div id="types">Type: </div>
+								</div>
+							</div>
+						</div>
 					</div>
 			</form>
 		</div>
