@@ -204,6 +204,7 @@ input[type=submit]:focus {
 #pokedex {
 	position: relative;
 	bottom: 25%;
+	font-family: Verdana;
 }
 .modal-content {
 	clear: left;
@@ -222,7 +223,6 @@ input[type=submit]:focus {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border: 5px solid #DB0101;
 	padding:20px 10px 20px 10px;
 }
 #modal-info {
@@ -238,14 +238,16 @@ input[type=submit]:focus {
 	text-align: left;
 }
 #name {
-		animation: type1 4s steps(60, end);
+	animation: type1 2s steps(60, end);
+	font-family: Verdana;
 }
 @keyframes type1{ 
-		from { width: 45px; } 
+	from { width: 45px; } 
 }
 #weight, #height, #types, #sideimage > img{
 	opacity: 1;
-	animation: show 4s ease-in-out;
+	animation: show 2s ease-in-out;
+	font-family: Verdana;
 } 
 @keyframes show {
 	from { opacity: 0 }
