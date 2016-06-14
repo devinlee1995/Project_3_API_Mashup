@@ -256,3 +256,33 @@ input[type=submit]:focus {
 	border-radius: 5px;
 	margin-left: 5px;
 }
+
+#footer {
+	height: 40px;
+	width: 90%;
+	margin: 10px auto 20px auto;
+}
+
+#footerleft {
+	width: 90%;
+	height: 10px;
+	float: left;
+	text-align: left;
+}
+
+#footerright {
+	width: 50%;
+	float: right;
+	text-align: right;
+	margin: 0px;
+}
+
+.footnav {
+	display: inline;
+	margin-left: 10px;	
+}
+
+p.footer {
+	font-family: verdana;
+	font-size: 20px;
+}
