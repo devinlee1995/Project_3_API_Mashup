@@ -32,6 +32,7 @@ function Pokemon() {
 
 $(document).ready(function(){
 
+  //Getting the nav highlighted for the correct link
   var title = document.URL.split('/').join(' ').trim().split(" ");
   title = title[title.length-1];
   var currentDir = document.querySelectorAll("[href='" + title + "']")[0];
