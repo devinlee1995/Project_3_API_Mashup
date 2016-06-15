@@ -60,7 +60,7 @@ $(document).ready(function(){
 
         //store pokemon name
         pokemon.name = response.name[0].toUpperCase() + (response.name).slice(1);
-		document.getElementById('Pokemon').innerHTML = "The Pokemon is: " + pokemon.name;
+		    document.getElementById('Pokemon').innerHTML = "The Pokemon is: " + pokemon.name;
         document.getElementById("name").innerHTML = "Name: " + pokemon.name;
         console.log("Name: " + pokemon.name);
 
@@ -119,6 +119,7 @@ $(document).ready(function(){
           $(".modal-wrapper2").hide();
           $("body").removeClass("modal-on");
            document.getElementById('Pokemon').innerHTML = "Enter a Pokemon!";
+           document.querySelectorAll('[name="name"]')[0].value = "";
          });
         },
         error: function(jqXHR, textStatus, errorThrown) {
