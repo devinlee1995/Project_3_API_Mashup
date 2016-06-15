@@ -180,7 +180,6 @@ input[type=submit]:focus {
   display: none;
 }
 .modal {
-	border: 5px solid white;
 	border-radius: 5px;
 	background-color: white;
 	width: 500px;
@@ -191,8 +190,18 @@ input[type=submit]:focus {
 }
 .exit {
 	position: absolute;
-	top: 0%;
+	top: -15%;
 	right: 0%;
+	border-radius: 50px;
+	text-decoration: none;
+	color: white;
+	transition: all 0.5s;
+	background-color: transparent;
+	border: 1px solid transparent;
+}
+.exit:hover {
+	color: red;
+	cursor: pointer;
 }
 #modal-header {
 	margin-top: 10px;
@@ -255,6 +264,7 @@ input[type=submit]:focus {
 	padding: 2px;
 	border-radius: 5px;
 	margin-left: 5px;
+	color: white;
 }
 
 #footer {
