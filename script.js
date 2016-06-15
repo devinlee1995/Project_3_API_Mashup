@@ -38,8 +38,7 @@ $(document).ready(function(){
   var currentDir = document.querySelectorAll("[href='" + title + "']")[0];
   currentDir.style.textDecoration = "underline";
   currentDir.style.color = "#FF533F";
-
-  console.log(currentDir);
+  
   $("#search").on("submit",function(e){
     $(".modal-wrapper1").show();
     $(".loader").show();
@@ -61,7 +60,7 @@ $(document).ready(function(){
 
         //store pokemon name
         pokemon.name = response.name[0].toUpperCase() + (response.name).slice(1);
-		document.getElementById('Pokemon').innerHTML = "The Pokemon is: " + pokemon.name;
+		    document.getElementById('Pokemon').innerHTML = "The Pokemon is: " + pokemon.name;
         document.getElementById("name").innerHTML = "Name: " + pokemon.name;
         console.log("Name: " + pokemon.name);
 
@@ -120,6 +119,7 @@ $(document).ready(function(){
           $(".modal-wrapper2").hide();
           $("body").removeClass("modal-on");
            document.getElementById('Pokemon').innerHTML = "Enter a Pokemon!";
+           document.querySelectorAll('[name="name"]')[0].value = "";
          });
         },
         error: function(jqXHR, textStatus, errorThrown) {
